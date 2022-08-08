@@ -28,12 +28,14 @@ class TaskCardWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title ?? "(Unnamed Task)",
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
+            Flexible(
+              child: Text(
+                title ?? "(Unnamed Task)",
+                // ignore: prefer_const_constructors
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Padding(

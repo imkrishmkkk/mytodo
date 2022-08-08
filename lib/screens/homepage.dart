@@ -56,20 +56,23 @@ class _HomepageState extends State<Homepage> {
                         child: FutureBuilder(
                           future: _dbHelper.getTasks(Task),
                           builder: (BuildContext context,
-                              AsyncSnapshot<List<Task>> snapshot) {
+                              AsyncSnapshot<List<Task>?> snapshot) {
                             return ScrollConfiguration(
                               behavior: NoGlowBehaviour(),
                               child: ListView.builder(
-                                  itemCount: snapshot.data!.length,
+                                  itemCount: snapshot.data?.length,
                                   itemBuilder: (context, index) {
-
+                                    
                                     return GestureDetector(
                                       onTap: () {
+                                        
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => Taskpage(
                                               task: snapshot.data![index],
+                                              
+                                              
                                             ),
                                           ),
                                         ).then(
@@ -81,8 +84,8 @@ class _HomepageState extends State<Homepage> {
                                         );
                                       },
                                       child: TaskCardWidget(
-                                        title: snapshot.data![index].title,
-                                        desc: snapshot.data![index].description,
+                                        title: snapshot.data![index].title ?? " ",
+                                        desc: snapshot.data![index].description ?? "no description",
                                       ),
                                     );
                                   }),
